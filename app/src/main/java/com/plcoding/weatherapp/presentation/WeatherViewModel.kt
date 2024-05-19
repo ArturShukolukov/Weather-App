@@ -18,7 +18,6 @@ import javax.inject.Inject
 class WeatherViewModel @Inject constructor(
     private val repository: WeatherRepository,
     private val locationTracker: LocationTracker,
-    //@ApplicationContext private val context: Context // Inject application context
 ) : ViewModel() {
 
     var state by mutableStateOf(WeatherState())
@@ -28,10 +27,10 @@ class WeatherViewModel @Inject constructor(
             state = state.copy(isLoading = true, error = null)
             val location = locationTracker.getCurrentLocation()
             if (location != null) {
-                val tmzn = TimeZone.getDefault()
+
 
                 val result =
-                    repository.getWeatherData(location.latitude, location.longitude, tmzn)
+                    repository.getWeatherData(location.latitude, location.longitude, TimeZone.getDefault())
                 state = when (result) {
                     is Resource.Success -> state.copy(
                         weatherInfo = result.data,
