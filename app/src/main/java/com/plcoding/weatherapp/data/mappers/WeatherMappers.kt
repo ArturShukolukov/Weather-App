@@ -25,7 +25,8 @@ fun HourlyWeatherDataDTO.toHourlyWeatherDataList(): List<WeatherData> {
 fun DailyWeatherDataDTO.toDailyWeatherDataList(): List<WeatherData> {
     return times.mapIndexed { index, time ->
         WeatherData(
-            time = LocalDate.parse(time, DateTimeFormatter.ISO_DATE).atStartOfDay(),  // Converts LocalDate to LocalDateTime at start of day
+            time = LocalDate.parse(time, DateTimeFormatter.ISO_DATE)
+                .atStartOfDay(),  // Converts LocalDate to LocalDateTime at start of day
             temperatureCelsius = (minTemperatures[index] + maxTemperatures[index]) / 2,
             weatherType = enumFromId<WeatherType>(weatherCodes[index]) ?: WeatherType.CLEAR_SKY
         )

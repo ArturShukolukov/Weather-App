@@ -27,10 +27,10 @@ class WeatherViewModel @Inject constructor(
             state = state.copy(isLoading = true, error = null)
             val location = locationTracker.getCurrentLocation()
             if (location != null) {
-
-
                 val result =
-                    repository.getWeatherData(location.latitude, location.longitude, TimeZone.getDefault())
+                    repository.getWeatherData(location.latitude, location.longitude,
+                        TimeZone.getDefault()
+                    )
                 state = when (result) {
                     is Resource.Success -> state.copy(
                         weatherInfo = result.data,

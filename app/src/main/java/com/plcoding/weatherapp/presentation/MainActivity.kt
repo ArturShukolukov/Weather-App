@@ -67,10 +67,16 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .background(DarkBlue)
                     ) {
-                        WeatherCard(
-                            state = viewModel.state,
-                            backgroundColor = DeepBlue
-                        )
+                        val data = viewModel.state.weatherInfo?.currentWeatherData
+                        if (data != null) {
+                            WeatherCard(
+                                data = data,
+                                backgroundColor = DeepBlue
+                            )
+                        }
+                        else {
+                            //TODO EMPTY STATE RENDER
+                        }
 
                         Spacer(modifier = Modifier.height(16.dp))
                         // Display the city name
