@@ -6,78 +6,47 @@ import com.plcoding.weatherapp.R
 // Cоздадим extension функцию, которая принимает ID и возвращает соответствующий элемент enum
 //inline fun <reified T : Enum<T>> enumFromId(id: Int): T? where T : Enum<T>, T : EnumId {
 inline fun <reified T> enumFromId(id: Int): T? where T : Enum<T>, T : EnumId {
-    return enumValues<T>().find { it.getId() == id }
+    return enumValues<T>().find { it.getWeatherTypeId() == id }
 }
 
 // Для того, чтобы наша функция работала с любым enum, который имеет ID, создадим интерфейс
 interface EnumId {
-    fun getId(): Int
+    fun getWeatherTypeId(): Int
 }
 
-enum class WeatherType(val id: Int) : EnumId {
-    CLEAR_SKY(0),
-    MAINLY_CLEAR(1),
-    PARTLY_CLOUDY(2),
-    OVERCAST(3),
-    FOGGY(45),
-    DEPOSITING_RIME_FOG(48),
-    LIGHT_DRIZZLE(51),
-    MODERATE_DRIZZLE(53),
-    DENSE_DRIZZLE(55),
-    LIGHT_FREEZING_DRIZZLE(56),
-    DENSE_FREEZING_DRIZZLE(57),
-    SLIGHT_RAIN(61),
-    MODERATE_RAIN(62),
-    HEAVY_RAIN(63),
-    LIGHT_FREEZING_RAIN(66),
-    HEAVY_FREEZING_RAIN(67),
-    SLIGHT_SNOWFALL(71),
-    MODERATE_SNOWFALL(73),
-    HEAVY_SNOWFALL(75),
-    SNOW_GRAINS(77),
-    SLIGHT_RAIN_SHOWERS(80),
-    MODERATE_RAIN_SHOWERS(81),
-    VIOLENT_RAIN_SHOWERS(82),
-    SLIGHT_SNOW_SHOWERS(85),
-    HEAVY_SNOW_SHOWERS(86),
-    MODERATE_THUNDERSTORM(95),
-    SLIGHT_HAIL_THUNDERSTORM(96),
-    HEAVY_HAIL_THUNDERSTORM(99);
 
-    override fun getId(): Int = id
+enum class WeatherType(val id: Int, val drawableResId: Int) : EnumId {
+    CLEAR_SKY(0, R.drawable.ic_sunny),
+    MAINLY_CLEAR(1, R.drawable.ic_cloudy),
+    PARTLY_CLOUDY(2, R.drawable.ic_cloudy),
+    OVERCAST(3, R.drawable.ic_cloudy),
+    FOGGY(45, R.drawable.ic_very_cloudy),
+    DEPOSITING_RIME_FOG(48, R.drawable.ic_very_cloudy),
+    LIGHT_DRIZZLE(51, R.drawable.ic_rainshower),
+    MODERATE_DRIZZLE(53, R.drawable.ic_rainshower),
+    DENSE_DRIZZLE(55, R.drawable.ic_rainshower),
+    LIGHT_FREEZING_DRIZZLE(56, R.drawable.ic_snowyrainy),
+    DENSE_FREEZING_DRIZZLE(57, R.drawable.ic_snowyrainy),
+    SLIGHT_RAIN(61, R.drawable.ic_rainy),
+    MODERATE_RAIN(62, R.drawable.ic_rainy),
+    HEAVY_RAIN(63, R.drawable.ic_rainy),
+    LIGHT_FREEZING_RAIN(66, R.drawable.ic_snowyrainy),
+    HEAVY_FREEZING_RAIN(67, R.drawable.ic_snowyrainy),
+    SLIGHT_SNOWFALL(71, R.drawable.ic_snowy),
+    MODERATE_SNOWFALL(73, R.drawable.ic_heavysnow),
+    HEAVY_SNOWFALL(75, R.drawable.ic_heavysnow),
+    SNOW_GRAINS(77, R.drawable.ic_heavysnow),
+    SLIGHT_RAIN_SHOWERS(80, R.drawable.ic_rainshower),
+    MODERATE_RAIN_SHOWERS(81, R.drawable.ic_rainshower),
+    VIOLENT_RAIN_SHOWERS(82, R.drawable.ic_rainshower),
+    SLIGHT_SNOW_SHOWERS(85, R.drawable.ic_snowy),
+    HEAVY_SNOW_SHOWERS(86, R.drawable.ic_snowy),
+    MODERATE_THUNDERSTORM(95, R.drawable.ic_thunder),
+    SLIGHT_HAIL_THUNDERSTORM(96, R.drawable.ic_rainythunder),
+    HEAVY_HAIL_THUNDERSTORM(99, R.drawable.ic_rainythunder);
 
-    fun getDrawableResId(): Int {
-        return when (this) {
-            CLEAR_SKY -> R.drawable.ic_sunny
-            MAINLY_CLEAR -> R.drawable.ic_cloudy
-            PARTLY_CLOUDY -> R.drawable.ic_cloudy
-            OVERCAST -> R.drawable.ic_cloudy
-            FOGGY -> R.drawable.ic_very_cloudy
-            DEPOSITING_RIME_FOG -> R.drawable.ic_very_cloudy
-            LIGHT_DRIZZLE -> R.drawable.ic_rainshower
-            MODERATE_DRIZZLE -> R.drawable.ic_rainshower
-            DENSE_DRIZZLE -> R.drawable.ic_rainshower
-            LIGHT_FREEZING_DRIZZLE -> R.drawable.ic_snowyrainy
-            DENSE_FREEZING_DRIZZLE -> R.drawable.ic_snowyrainy
-            SLIGHT_RAIN -> R.drawable.ic_rainy
-            MODERATE_RAIN -> R.drawable.ic_rainy
-            HEAVY_RAIN -> R.drawable.ic_rainy
-            LIGHT_FREEZING_RAIN -> R.drawable.ic_snowyrainy
-            HEAVY_FREEZING_RAIN -> R.drawable.ic_snowyrainy
-            SLIGHT_SNOWFALL -> R.drawable.ic_snowy
-            MODERATE_SNOWFALL -> R.drawable.ic_heavysnow
-            HEAVY_SNOWFALL -> R.drawable.ic_heavysnow
-            SNOW_GRAINS -> R.drawable.ic_heavysnow
-            SLIGHT_RAIN_SHOWERS -> R.drawable.ic_rainshower
-            MODERATE_RAIN_SHOWERS -> R.drawable.ic_rainshower
-            VIOLENT_RAIN_SHOWERS -> R.drawable.ic_rainshower
-            SLIGHT_SNOW_SHOWERS -> R.drawable.ic_snowy
-            HEAVY_SNOW_SHOWERS -> R.drawable.ic_snowy
-            MODERATE_THUNDERSTORM -> R.drawable.ic_thunder
-            SLIGHT_HAIL_THUNDERSTORM -> R.drawable.ic_rainythunder
-            HEAVY_HAIL_THUNDERSTORM -> R.drawable.ic_rainythunder
-        }
-    }
+    override fun getWeatherTypeId(): Int = id
+
 }
 
 //
