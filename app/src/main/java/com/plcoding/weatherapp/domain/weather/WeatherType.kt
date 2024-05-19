@@ -4,7 +4,6 @@ import com.plcoding.weatherapp.R
 
 
 // Cоздадим extension функцию, которая принимает ID и возвращает соответствующий элемент enum
-//inline fun <reified T : Enum<T>> enumFromId(id: Int): T? where T : Enum<T>, T : EnumId {
 inline fun <reified T> enumFromId(id: Int): T? where T : Enum<T>, T : EnumId {
     return enumValues<T>().find { it.getWeatherTypeId() == id }
 }

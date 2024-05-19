@@ -2,6 +2,7 @@ package com.plcoding.weatherapp.data.remote
 
 import retrofit2.http.GET
 import retrofit2.http.Query
+import java.util.TimeZone
 
 interface WeatherAPI {
 
@@ -10,6 +11,6 @@ interface WeatherAPI {
         @Query("latitude") lat: Double,
         @Query("longitude") long: Double,
         @Query("forecast_days") forecastDays: Int = 10,
-        @Query("timezone") timezone: String
+        @Query("timezone") timezone: TimeZone
     ) : WeatherDTO
 }

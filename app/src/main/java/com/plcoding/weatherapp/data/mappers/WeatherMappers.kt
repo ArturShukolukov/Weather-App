@@ -3,7 +3,6 @@ package com.plcoding.weatherapp.data.mappers
 import com.plcoding.weatherapp.data.remote.DailyWeatherDataDTO
 import com.plcoding.weatherapp.data.remote.HourlyWeatherDataDTO
 import com.plcoding.weatherapp.data.remote.WeatherDTO
-//import com.plcoding.weatherapp.data.remote.WeatherDataDTO
 import com.plcoding.weatherapp.domain.weather.WeatherData
 import com.plcoding.weatherapp.domain.weather.WeatherInfo
 import com.plcoding.weatherapp.domain.weather.WeatherType
