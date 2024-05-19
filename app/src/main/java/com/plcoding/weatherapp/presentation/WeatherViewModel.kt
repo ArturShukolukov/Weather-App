@@ -31,6 +31,7 @@ class WeatherViewModel @Inject constructor(
                     is Resource.Success -> {
                         state = state.copy(
                             weatherInfo = result.data,
+                            cityName = result.data?.cityName,
                             isLoading = false,
                             error = null
                         )
