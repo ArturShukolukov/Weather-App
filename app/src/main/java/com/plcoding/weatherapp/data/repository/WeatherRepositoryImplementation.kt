@@ -14,38 +14,7 @@ import com.plcoding.weatherapp.domain.weather.WeatherInfo
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-//class WeatherRepositoryImplementation @Inject constructor(
-//    private val weatherAPI: WeatherAPI,
-//    private val bigDataCloudAPI: BigDataCloudAPI,
-//    private val context: Context
-//): WeatherRepository {
-//        override suspend fun getWeatherData(lat: Double, long: Double): Resource<WeatherInfo> {
-//            return try {
-////                Resource.Success(
-////                    data = api.getWeatherData(
-////                    lat = lat,
-////                    long = long
-////                    ).toWeatherInfo()
-////                )
-//                val timezone = getTimeZoneFromLocation(context, lat, long)
-//
-//                val weatherDTO = weatherAPI.getWeatherData(lat, long)
-//                val weatherInfo = weatherDTO.toWeatherInfo()
-//
-//                // Fetch city name
-//                val cityResponse = bigDataCloudAPI.getCityName(lat, long)
-//                val cityName = cityResponse.city ?: "Unknown"
-//
-//                // Update weatherInfo with the city name
-//                val updatedWeatherInfo = weatherInfo.copy(cityName = cityName)
-//
-//                Resource.Success(data = updatedWeatherInfo)
-//            } catch (e: Exception) {
-//                e.printStackTrace()
-//                Resource.Error(e.message ?: "Unknown error")
-//            }
-//        }
-//    }
+
 
 class WeatherRepositoryImplementation @Inject constructor(
     private val weatherAPI: WeatherAPI,

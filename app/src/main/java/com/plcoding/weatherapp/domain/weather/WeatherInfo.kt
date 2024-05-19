@@ -5,7 +5,6 @@ data class WeatherInfo(
 //    // Int - number of the day, List of data - it consists of 24 entries. Each entry is data for specific hour of the day
 //    val currentWeatherData: WeatherData?,
 //    // API returns 7 days ин default???
-//    val cityName: String? = null
 
     val hourlyWeatherData: List<WeatherData>,
     val dailyWeatherData: List<WeatherData>,
